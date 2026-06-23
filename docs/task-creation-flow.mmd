@@ -1,0 +1,44 @@
+flowchart TD
+  A([Entrada a la app]) --> B[TaskDashboardScreen]
+  B --> C[TaskListSection]
+  C --> D{Hay tareas?}
+  D -->|No| E[EmptyStateSection]
+  D -->|Si| F[TaskList]
+  E --> G[Click en FAB Crear tarea]
+  F --> G
+
+  G --> H[TaskFormDialog o TaskFormPanel]
+  H --> I[Usuario escribe titulo]
+  I --> J[Usuario escribe descripcion]
+  J --> K{Descripcion suficiente?}
+  K -->|No| L[Mostrar validacion local]
+  L --> J
+  K -->|Si| M[Click en Sugerir ICE con IA]
+
+  M --> N[AIRecommendationPanel: loading]
+  N --> O{Respuesta IA valida?}
+  O -->|No| P[Mostrar error recuperable]
+  P --> Q{Usuario reintenta?}
+  Q -->|Si| M
+  Q -->|No| R[Edicion manual de Impacto Confianza Esfuerzo]
+
+  O -->|Si| S[Mostrar sugerencia ICE]
+  S --> T[Mostrar Impacto Confianza Esfuerzo]
+  T --> U[Mostrar razon breve de IA]
+  U --> V{Usuario acepta sugerencia?}
+
+  V -->|Editar manualmente| R
+  R --> W[Recalcular ICE automaticamente]
+  W --> X[Vista previa de prioridad]
+
+  V -->|Aceptar| X
+  X --> Y{Formulario valido?}
+  Y -->|No| Z[Mostrar errores de formulario]
+  Z --> H
+  Y -->|Si| AA[Click en Guardar tarea]
+
+  AA --> AB[Crear Task en estado pending]
+  AB --> AC[Actualizar TaskList ordenada por ICE]
+  AC --> AD[TaskConfirmedSummary]
+  AD --> AE[Volver a TaskDashboardScreen]
+  AE --> C

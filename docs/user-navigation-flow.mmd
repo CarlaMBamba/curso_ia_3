@@ -1,0 +1,42 @@
+flowchart TD
+  App[App] --> Layout[MainLayout]
+  Layout --> Header[AppHeader]
+  Layout --> Dashboard[TaskDashboardScreen /]
+
+  Dashboard --> Summary[PrioritySummarySection]
+  Dashboard --> List[TaskListSection]
+  Dashboard --> Action[CreateTaskAction]
+
+  List --> Empty[EmptyTaskState]
+  List --> TaskCard[TaskCard]
+
+  Action --> Create[TaskCreateDialog]
+  TaskCard --> Edit[TaskEditDialog]
+  TaskCard --> Confirm[TaskConfirmedSummary]
+
+  Create --> Form[TaskForm]
+  Edit --> Form
+  Form --> ManualIce[IceManualFields]
+  Form --> AiPanel[AIRecommendationPanel]
+  Form --> FormActions[TaskFormActions]
+
+  AiPanel --> Loading[AILoadingState]
+  AiPanel --> Error[AIErrorState]
+  AiPanel --> Suggestion[AIRecommendationResult]
+
+  FormActions --> Save[SaveTask]
+  Save --> Confirm
+  Confirm --> Dashboard
+
+  Header --> Dashboard
+
+  subgraph Routes
+    R1["/ -> TaskDashboardScreen"]
+  end
+
+  subgraph OutOfScope
+    R2["No /login"]
+    R3["No /settings"]
+    R4["No /tasks/:id route"]
+    R5["No pagination route"]
+  end

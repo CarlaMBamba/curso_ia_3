@@ -1,0 +1,24 @@
+name: Validate main PR source
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - edited
+      - ready_for_review
+
+jobs:
+  validate-main-pr-source:
+    name: validate-main-pr-source
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ensure main only receives PRs from dev
+        if: ${{ github.head_ref != 'dev' }}
+        run: |
+          echo "Pull requests into main must come from dev."
+          echo "Current source branch: ${{ github.head_ref }}"
+          exit 1

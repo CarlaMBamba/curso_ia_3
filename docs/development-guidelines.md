@@ -2,23 +2,23 @@
 
 ## Estructura de carpetas
 
-| Ruta | Uso |
-| --- | --- |
-| `src/main.tsx` | Arranque de React. |
-| `src/App.tsx` | Composicion principal. |
-| `src/components/` | Componentes reutilizables. |
-| `src/features/` | Funcionalidad por dominio. |
-| `src/features/tasks/` | Todo lo relativo a tareas. |
-| `src/features/tasks/components/` | UI especifica de tareas. |
-| `src/features/tasks/hooks/` | Hooks especificos de tareas. |
-| `src/features/tasks/services/` | Llamadas externas de tareas. |
-| `src/features/tasks/types/` | Tipos de dominio de tareas. |
-| `src/shared/` | Utilidades reutilizables. |
-| `src/shared/components/` | UI comun no ligada al dominio. |
-| `src/shared/hooks/` | Hooks reutilizables. |
-| `src/shared/utils/` | Funciones puras. |
-| `src/shared/types/` | Tipos compartidos. |
-| `src/theme/` | Configuracion de Material UI. |
+| Ruta                             | Uso                            |
+| -------------------------------- | ------------------------------ |
+| `src/main.tsx`                   | Arranque de React.             |
+| `src/App.tsx`                    | Composicion principal.         |
+| `src/components/`                | Componentes reutilizables.     |
+| `src/features/`                  | Funcionalidad por dominio.     |
+| `src/features/tasks/`            | Todo lo relativo a tareas.     |
+| `src/features/tasks/components/` | UI especifica de tareas.       |
+| `src/features/tasks/hooks/`      | Hooks especificos de tareas.   |
+| `src/features/tasks/services/`   | Llamadas externas de tareas.   |
+| `src/features/tasks/types/`      | Tipos de dominio de tareas.    |
+| `src/shared/`                    | Utilidades reutilizables.      |
+| `src/shared/components/`         | UI comun no ligada al dominio. |
+| `src/shared/hooks/`              | Hooks reutilizables.           |
+| `src/shared/utils/`              | Funciones puras.               |
+| `src/shared/types/`              | Tipos compartidos.             |
+| `src/theme/`                     | Configuracion de Material UI.  |
 
 - [ ] Mantener la estructura plana mientras el proyecto sea pequeno.
 - [ ] Crear carpetas nuevas solo si hay al menos dos archivos relacionados.
@@ -33,18 +33,18 @@
 
 ## Convenciones de nombres
 
-| Elemento | Convencion | Ejemplo |
-| --- | --- | --- |
-| Componentes | PascalCase | `TaskForm.tsx` |
-| Hooks | camelCase con `use` | `useTasks.ts` |
-| Servicios | camelCase + `Service` | `aiService.ts` |
-| Tipos | PascalCase | `Task` |
-| Props | Nombre del componente + `Props` | `TaskItemProps` |
-| Constantes | camelCase o UPPER_CASE | `defaultTask` |
-| Utilidades | camelCase | `calculateIceScore` |
-| Tests | mismo nombre + `.test` | `ice.test.ts` |
-| Carpetas feature | kebab-case o plural simple | `tasks` |
-| Variables booleanas | prefijo semantico | `isLoading` |
+| Elemento            | Convencion                      | Ejemplo             |
+| ------------------- | ------------------------------- | ------------------- |
+| Componentes         | PascalCase                      | `TaskForm.tsx`      |
+| Hooks               | camelCase con `use`             | `useTasks.ts`       |
+| Servicios           | camelCase + `Service`           | `aiService.ts`      |
+| Tipos               | PascalCase                      | `Task`              |
+| Props               | Nombre del componente + `Props` | `TaskItemProps`     |
+| Constantes          | camelCase o UPPER_CASE          | `defaultTask`       |
+| Utilidades          | camelCase                       | `calculateIceScore` |
+| Tests               | mismo nombre + `.test`          | `ice.test.ts`       |
+| Carpetas feature    | kebab-case o plural simple      | `tasks`             |
+| Variables booleanas | prefijo semantico               | `isLoading`         |
 
 - [ ] Usar nombres de dominio, no nombres genericos.
 - [ ] Evitar abreviaturas salvo que sean del dominio.
@@ -59,18 +59,18 @@
 
 ## Organizacion de componentes con sus responsabilidades
 
-| Tipo | Responsabilidad |
-| --- | --- |
-| `App` | Componer layout y feature principal. |
-| Feature container | Estado y acciones de la feature. |
-| Form component | Captura y validacion basica de datos. |
-| List component | Renderizar colecciones ordenadas. |
-| Item component | Mostrar una entidad y sus acciones. |
-| Display component | Presentacion sin estado de negocio. |
-| Shared component | UI reutilizable y sin dominio fuerte. |
-| MUI component | Base visual preferida. |
-| Utility component | Solo si evita duplicacion real. |
-| Modal/Dialog | Solo para flujos que lo necesiten. |
+| Tipo              | Responsabilidad                       |
+| ----------------- | ------------------------------------- |
+| `App`             | Componer layout y feature principal.  |
+| Feature container | Estado y acciones de la feature.      |
+| Form component    | Captura y validacion basica de datos. |
+| List component    | Renderizar colecciones ordenadas.     |
+| Item component    | Mostrar una entidad y sus acciones.   |
+| Display component | Presentacion sin estado de negocio.   |
+| Shared component  | UI reutilizable y sin dominio fuerte. |
+| MUI component     | Base visual preferida.                |
+| Utility component | Solo si evita duplicacion real.       |
+| Modal/Dialog      | Solo para flujos que lo necesiten.    |
 
 - [ ] Preferir componentes pequenos y legibles.
 - [ ] Separar logica de dominio de la UI si crece.
@@ -85,13 +85,13 @@
 
 ## Uso de hooks
 
-| Hook | Uso aprobado |
-| --- | --- |
-| `useState` | Estado local simple. |
-| `useMemo` | Calculos derivados costosos o ordenaciones. |
+| Hook          | Uso aprobado                                     |
+| ------------- | ------------------------------------------------ |
+| `useState`    | Estado local simple.                             |
+| `useMemo`     | Calculos derivados costosos o ordenaciones.      |
 | `useCallback` | Solo si evita renders o dependencias inestables. |
-| `useEffect` | Efectos externos, no calculos derivados simples. |
-| Custom hook | Reutilizar logica de estado o efectos. |
+| `useEffect`   | Efectos externos, no calculos derivados simples. |
+| Custom hook   | Reutilizar logica de estado o efectos.           |
 
 - [ ] Empezar con hooks nativos de React.
 - [ ] Crear custom hooks solo cuando reduzcan complejidad.
@@ -106,18 +106,18 @@
 
 ## Gestion del estado
 
-| Necesidad | Decision |
-| --- | --- |
-| Estado de formulario | Local en el formulario. |
-| Lista de tareas | Estado en el contenedor de feature. |
-| Filtros simples | Estado local. |
-| ICE calculado | Valor derivado, no duplicado si es posible. |
-| Loading de API | Estado junto a la accion asincrona. |
-| Error de API | Estado junto a la accion asincrona. |
-| Datos persistentes | Fuera de alcance. |
-| Estado global | Evitar por defecto. |
-| Context | Solo para tema o estado transversal real. |
-| Libreria externa | No usar para este MVP. |
+| Necesidad            | Decision                                    |
+| -------------------- | ------------------------------------------- |
+| Estado de formulario | Local en el formulario.                     |
+| Lista de tareas      | Estado en el contenedor de feature.         |
+| Filtros simples      | Estado local.                               |
+| ICE calculado        | Valor derivado, no duplicado si es posible. |
+| Loading de API       | Estado junto a la accion asincrona.         |
+| Error de API         | Estado junto a la accion asincrona.         |
+| Datos persistentes   | Fuera de alcance.                           |
+| Estado global        | Evitar por defecto.                         |
+| Context              | Solo para tema o estado transversal real.   |
+| Libreria externa     | No usar para este MVP.                      |
 
 - [ ] Mantener el estado en el nivel mas bajo posible.
 - [ ] Subir estado solo cuando varios componentes lo necesiten.
@@ -132,18 +132,18 @@
 
 ## Gestion de llamadas API
 
-| Regla | Decision |
-| --- | --- |
-| Cliente HTTP | `fetch`. |
-| Ubicacion | `services/`. |
-| API key | Variable de entorno de Vite. |
-| Backend | No existe. |
-| Seguridad | Solo uso didactico/local. |
-| Respuesta IA | JSON validado. |
-| Fallback | Mock permitido para clase. |
-| Datos sensibles | No enviar. |
-| Reintentos | No implementar inicialmente. |
-| Cache | No implementar inicialmente. |
+| Regla           | Decision                     |
+| --------------- | ---------------------------- |
+| Cliente HTTP    | `fetch`.                     |
+| Ubicacion       | `services/`.                 |
+| API key         | Variable de entorno de Vite. |
+| Backend         | No existe.                   |
+| Seguridad       | Solo uso didactico/local.    |
+| Respuesta IA    | JSON validado.               |
+| Fallback        | Mock permitido para clase.   |
+| Datos sensibles | No enviar.                   |
+| Reintentos      | No implementar inicialmente. |
+| Cache           | No implementar inicialmente. |
 
 - [ ] Encapsular cada llamada en una funcion de servicio.
 - [ ] No llamar APIs directamente desde componentes de presentacion.
@@ -158,18 +158,18 @@
 
 ## Manejo de errores y cargas
 
-| Estado | UI esperada |
-| --- | --- |
-| `idle` | Accion disponible. |
-| `loading` | Boton deshabilitado y feedback visible. |
-| `success` | Datos actualizados. |
-| `error` | Mensaje recuperable. |
-| Sin API key | Aviso didactico. |
-| Sin descripcion | Validacion local. |
-| Respuesta invalida | Error controlado. |
-| Sin conexion | Error generico claro. |
-| Tarea vacia | Mensaje de validacion. |
-| Lista vacia | Estado vacio simple. |
+| Estado             | UI esperada                             |
+| ------------------ | --------------------------------------- |
+| `idle`             | Accion disponible.                      |
+| `loading`          | Boton deshabilitado y feedback visible. |
+| `success`          | Datos actualizados.                     |
+| `error`            | Mensaje recuperable.                    |
+| Sin API key        | Aviso didactico.                        |
+| Sin descripcion    | Validacion local.                       |
+| Respuesta invalida | Error controlado.                       |
+| Sin conexion       | Error generico claro.                   |
+| Tarea vacia        | Mensaje de validacion.                  |
+| Lista vacia        | Estado vacio simple.                    |
 
 - [ ] Mostrar cargas solo donde ocurre la accion.
 - [ ] No bloquear toda la app por una llamada de IA.
@@ -184,16 +184,30 @@
 
 ## Librerias aprobadas
 
-| Libreria | Uso | Estado |
-| --- | --- | --- |
-| `react` | UI principal. | Aprobada |
-| `react-dom` | Renderizado DOM. | Aprobada |
-| `typescript` | Tipado estatico. | Aprobada |
-| `vite` | Build y dev server. | Aprobada |
-| `@mui/material` | Componentes Material Design. | Aprobada |
-| `@mui/icons-material` | Iconos Material. | Aprobada |
-| `@emotion/react` | Requisito de MUI. | Aprobada |
-| `@emotion/styled` | Requisito de MUI. | Aprobada |
+| Libreria              | Uso                          | Estado   |
+| --------------------- | ---------------------------- | -------- |
+| `react`               | UI principal.                | Aprobada |
+| `react-dom`           | Renderizado DOM.             | Aprobada |
+| `typescript`          | Tipado estatico.             | Aprobada |
+| `vite`                | Build y dev server.          | Aprobada |
+| `@mui/material`       | Componentes Material Design. | Aprobada |
+| `@mui/icons-material` | Iconos Material.             | Aprobada |
+| `@emotion/react`      | Requisito de MUI.            | Aprobada |
+| `@emotion/styled`     | Requisito de MUI.            | Aprobada |
+
+## Herramientas de calidad aprobadas
+
+| Herramienta                         | Uso                                                 | Estado   |
+| ----------------------------------- | --------------------------------------------------- | -------- |
+| `eslint`                            | Analisis estatico de codigo.                        | Aprobada |
+| `@eslint/js`                        | Reglas base recomendadas de JavaScript para ESLint. | Aprobada |
+| `typescript-eslint`                 | Reglas y parser de TypeScript para ESLint.          | Aprobada |
+| `eslint-plugin-react`               | Reglas de React para ESLint.                        | Aprobada |
+| `eslint-plugin-react-hooks`         | Reglas de hooks de React para ESLint.               | Aprobada |
+| `eslint-plugin-import`              | Reglas de importaciones para ESLint.                | Aprobada |
+| `eslint-import-resolver-typescript` | Resolucion de importaciones TypeScript en ESLint.   | Aprobada |
+| `eslint-config-prettier`            | Desactiva reglas de ESLint que chocan con Prettier. | Aprobada |
+| `prettier`                          | Formato automatico de codigo y documentacion.       | Aprobada |
 
 - [ ] No anadir librerias sin una necesidad clara.
 - [ ] Preferir APIs nativas del navegador.
